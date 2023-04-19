@@ -44,6 +44,8 @@ def display2(grid):
         print ("")
 def display3(grid):
     grid2=[]
+    global winner
+    global token
     for element in grid:
         grid2.append(element)
     grid2.append([i for i in range(0,len(grid2[0]))])
@@ -54,7 +56,8 @@ def display3(grid):
             txt ="  "
         for column in grid2[line]:
             if(str(column) in ["/","\\","-","|","/"]):
-                txt=txt + f"{OKBLUE}{str(column)}{ENDC}" + " " 
+                
+                txt=txt + f"{OKBLUE}{str(token[winner])}{ENDC}" + " " 
             else:
                 txt=txt + str(column) + " " 
         print(txt)
@@ -165,7 +168,7 @@ def check_winner(grid, line,column):
     return False
 def add_token(grid,player,column):
     token="X"
-    if player == 1:
+    if player == 2:
         token="O"
     line =0
     prev_line =0
@@ -186,8 +189,8 @@ def check_game_over(grid):
                 return False
     return True        
 print("")
-display3(grid)
 winner = None
+display3(grid)
 current_player =1
 token=[".","X","O"]
 while winner == None:
@@ -195,7 +198,7 @@ while winner == None:
         print(" GAME OVER NO WINNER")
         break
     try:
-        column=int(input (f"player {token[current_player%2+1]} play please:"))
+        column=int(input (f"player {token[current_player]} play please:"))
         if(column >= len(grid[0]) or column < 0):
             print (f"(out of range) ",end="")
             continue 
@@ -213,7 +216,7 @@ while winner == None:
     else:
         current_player=1
 display3(grid)
-print ("        Congratulation player"+ str(winner))
+print ("        Congratulation player "+ str(winner) + " played as "+ token[winner])
         
             
     
