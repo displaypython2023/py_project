@@ -64,10 +64,27 @@ def check_vertical(grid,line,column):
     if(grid[line][column]==grid[line+1][column]==grid[line+2][column]):
         return True
     return False
+def check_axes(grid,line,column):
+#check axes
+    if(line+2 < len(grid) and column +2 < len(grid[line])):
+        if(grid[line][column]==grid[line+1][column+1]==grid[line+2][column+2]):
+            return True
+    if(line-2 >= 0 and column -2 >= 0):
+        if(grid[line][column]==grid[line-1][column-1]==grid[line-2][column-2]):
+            return True
+    if(line-2 >=0 and column +2 < len(grid[line])):
+        if(grid[line][column]==grid[line-1][column+1]==grid[line-2][column+2]):
+            return True
+    if(line+2 < len(grid) and column -2 <= 0):
+        if(grid[line][column]==grid[line+1][column-1]==grid[line+2][column-2]):
+            return True
+    return False
 def check_winner(grid, line,column):
     if check_horizontal(grid,line,column)== True:
         return True
     if check_vertical(grid,line,column)== True:
+        return True
+    if check_axes(grid,line,column)== True:
         return True
     return False
 def add_token(grid,player,column):
