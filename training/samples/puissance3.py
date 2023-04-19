@@ -11,14 +11,15 @@ FAIL = '\033[91m'
 ENDC = '\033[0m'
 BOLD = '\033[1m'
 UNDERLINE = '\033[4m'
-grid =[
+"""grid =[
        [".",".",".",".",".","."]
      , [".",".",".",".",".","."]
      , [".",".",".",".",".","."]
      , [".",".",".",".",".","."]
      , [".",".",".",".",".","."]
      , [".",".",".",".",".","."]
-     ]
+     ]"""
+grid=[]
 #functions
 def display(grid):
     
@@ -179,7 +180,7 @@ def add_token(grid,player,column):
     if  prev_line >=0 and prev_line < len(grid) and grid[prev_line][column]== "." :
         placed= True
         grid[prev_line][column]=token
-    
+    print ("\n"*40)
     display3(grid)
     return prev_line , placed
 def check_game_over(grid):   
@@ -190,9 +191,14 @@ def check_game_over(grid):
     return True        
 print("")
 winner = None
-display3(grid)
 current_player =1
 token=[".","X","O"]
+size_game=int(input(" enter grid size :"))
+line=[]
+for _ in range(0,size_game):
+    grid.append(list("." for _ in range(size_game)))
+    
+display3(grid)
 while winner == None:
     if check_game_over(grid)==True:
         print(" GAME OVER NO WINNER")
@@ -215,8 +221,10 @@ while winner == None:
         current_player=2
     else:
         current_player=1
+print ("\n"*40)
 display3(grid)
-print ("        Congratulation player "+ str(winner) + " played as "+ token[winner])
+if(winner !=None):
+    print ("        Congratulation player "+ str(winner) + " played as "+ token[winner])
         
             
     
