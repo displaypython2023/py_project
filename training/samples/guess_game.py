@@ -2,7 +2,6 @@ from random import randint
 right_answer = randint(1,10)
 
 guess = int( input("Guess  the magic number between 1 an 10  :"))
-
 for i in range (2,4):
     if guess == right_answer :
         print("Eureka, it is indeed :"+str(right_answer))
