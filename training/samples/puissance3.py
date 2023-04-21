@@ -52,7 +52,7 @@ def display3(grid):
     grid2.append([i for i in range(0,len(grid2[0]))])
     for line in range(0,len(grid2)):
         if line!=len(grid2)-1:
-            txt = str(line)+" "
+            txt = " |"
         else: 
             txt ="  "
         for column in grid2[line]:
@@ -142,7 +142,7 @@ def check_axes(grid,line,column):
         if(grid[line][column]==grid[line-1][column+1]==grid[line-2][column+2]):
             color(line,column,"dr2")
             return True
-    if(line+2 < len(grid) and column -2 <= 0):
+    if(line+2 < len(grid) and column -2 >= 0):
         if(grid[line][column]==grid[line+1][column-1]==grid[line+2][column-2]):
             color(line,column,"dl2")
             return True
@@ -202,7 +202,7 @@ display3(grid)
 while winner == None:
     if check_game_over(grid)==True:
         print(" GAME OVER NO WINNER")
-        break
+        exit()
     try:
         column=int(input (f"player {token[current_player]} play please:"))
         if(column >= len(grid[0]) or column < 0):
