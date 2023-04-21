@@ -22,7 +22,7 @@ while code_length >6 or code_length < 1:
         print("enter a number please)")
 while letters_length >28 or letters_length < 6:
     try:
-        letters_length=int(input("choose complexity from 6-28 :"))
+        letters_length=int(input("choose a complexity from 6-28 :"))
     except ValueError:
         print("enter a number please)")
 
